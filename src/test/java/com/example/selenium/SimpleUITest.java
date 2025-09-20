@@ -14,16 +14,17 @@ public class SimpleUITest {
         System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
 
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless"); // run in headless mode for Jenkins CI
+        options.addArguments("--headless=new");  // better for CI/CD
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
 
         WebDriver driver = new ChromeDriver(options);
 
-        driver.get("http://<TEST_SERVER_IP>:8081/");
+        driver.get("http://3.142.45.241:8081/");  // replace with your TEST server IP
         String title = driver.getTitle();
 
-        assertEquals("Expected Title", title);
+        // update with the actual title of your app’s home page
+        assertEquals("Insurance Application", title);
 
         driver.quit();
     }
